@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/fonts/tt-norms-pro-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/fonts/tt-norms-pro-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: #F5F5F5;
+  color: #171717;
+  font-family: 'DM Sans', 'TT Norms Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+:lang(kn),
+.font-kannada {
+  font-family: 'Noto Sans Kannada', 'TT Norms Pro', sans-serif;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-28;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 focus:outline-none;
+  }
+
+  .btn-gold {
+    @apply btn bg-black text-white shadow-md hover:bg-gray-800;
+  }
+
+  .btn-ghost {
+    @apply btn border border-[#E2E8F0] bg-white text-[#0F172A] hover:bg-[#E2E8F0]/60;
+  }
+
+  .card {
+    @apply rounded-2xl border border-[#E2E8F0] bg-white shadow-sm;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#1E3A5F];
+  }
+
+  .gold-text {
+    @apply text-[#C8960C];
+  }
+
+  .gold-rule {
+    @apply h-px w-20 bg-[#C8960C]/50 rounded-full;
+  }
+}
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #F5F5F5; }
+  ::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 999px;
+  }
+}
