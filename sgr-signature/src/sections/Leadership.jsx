@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import SectionHeading from '../components/SectionHeading'
 import { useLanguage } from '../i18n/LanguageContext'
 import { boardMembers, headOfficeStaff, branchStaff } from '../data/society'
+import presidentPortrait from '../assets/president-portrait.jpg'
+import vicePresidentPortrait from '../assets/vice-president-portrait.jpg'
+import ceoPortrait from '../assets/ceo-portrait.jpg'
 
 function initials(name) {
   const clean = name.replace(/^(Shri|Smt)\.?\s*/i, '').trim()
@@ -9,12 +12,20 @@ function initials(name) {
   return ((parts[0]?.[0] || '') + (parts[1]?.[0] || '')).toUpperCase()
 }
 
-function StaffCard({ person, kn, showContact }) {
+function StaffCard({ person, kn, showContact, photo }) {
   return (
     <div className="flex items-center gap-3 rounded-2xl border border-[#E2E8F0] bg-white p-4 shadow-[0_1px_4px_0_rgba(0,0,0,0.04)]">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#F1F5F9] text-xs font-bold text-[#334155]">
-        {initials(person.name)}
-      </span>
+      {photo ? (
+        <img
+          src={photo}
+          alt={person.name}
+          className="h-10 w-10 shrink-0 rounded-full border border-[#E2E8F0] object-cover object-center"
+        />
+      ) : (
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#F1F5F9] text-xs font-bold text-[#334155]">
+          {initials(person.name)}
+        </span>
+      )}
       <div className="min-w-0">
         <p className="truncate text-sm font-medium text-[#0F172A]">{person.name}</p>
         <p className={`text-xs text-[#1E3A5F] ${kn}`}>{person.role}</p>
@@ -52,6 +63,7 @@ export default function Leadership() {
         <div className="mt-14 grid gap-4 sm:grid-cols-2">
           {[president, vicePresident].filter(Boolean).map((m, i) => {
             const isPresident = /^President$/i.test(m.role)
+            const photo = isPresident ? presidentPortrait : vicePresidentPortrait
             return (
               <motion.div
                 key={i}
@@ -65,13 +77,13 @@ export default function Leadership() {
                     : 'border-[#E2E8F0] bg-[#F8FAFC]'
                 }`}
               >
-                <span
-                  className={`grid h-14 w-14 shrink-0 place-items-center rounded-full text-base font-bold ${
-                    isPresident ? 'bg-[#0F172A] text-white' : 'bg-[#E2E8F0] text-[#334155]'
+                <img
+                  src={photo}
+                  alt={m.name}
+                  className={`h-16 w-16 shrink-0 rounded-2xl border object-cover object-center ${
+                    isPresident ? 'border-[#C8960C]/45' : 'border-[#CBD5E1]'
                   }`}
-                >
-                  {initials(m.name)}
-                </span>
+                />
                 <div>
                   <p className={`text-base font-semibold text-[#0F172A] ${kn}`}>{m.name}</p>
                   <p className={`mt-0.5 text-sm font-medium ${isPresident ? 'text-[#C8960C]' : 'text-[#64748B]'} ${kn}`}>
@@ -119,7 +131,13 @@ export default function Leadership() {
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {headOfficeStaff.map((p, i) => (
-                  <StaffCard key={i} person={p} kn={kn} showContact />
+                  <StaffCard
+                    key={i}
+                    person={p}
+                    kn={kn}
+                    showContact
+                    photo={/Chief Executive Officer/i.test(p.role) ? ceoPortrait : undefined}
+                  />
                 ))}
               </div>
             </div>

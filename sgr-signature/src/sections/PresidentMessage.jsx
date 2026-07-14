@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import SectionHeading from '../components/SectionHeading'
 import { useLanguage } from '../i18n/LanguageContext'
 import { boardMembers } from '../data/society'
+import presidentPortrait from '../assets/president-portrait.jpg'
 
 function initials(name) {
   const clean = name.replace(/^(Shri|Smt)\.?\s*/i, '').trim()
@@ -31,17 +32,21 @@ export default function PresidentMessage() {
             className="w-full max-w-xs shrink-0 lg:w-72 lg:max-w-none"
           >
             <div className="relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-white/[0.08]">
-              {/* Add: import presidentImg from '../assets/president.jpg' and set src={presidentImg} when photo is available */}
               {/* Fallback gradient + initials shown behind image (visible if image missing) */}
               <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center bg-gradient-to-br from-[#1E3A5F] to-[#0B1F3A]">
                 <span className="text-5xl font-bold text-[#C8960C]/40">
                   {president ? initials(president.name) : 'CE'}
                 </span>
               </div>
+              <img
+                src={presidentPortrait}
+                alt={t('president.name')}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
               {/* Bottom name plate */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-6 py-5">
-                <p className={`text-sm font-semibold text-white ${kn}`}>{t('president.name')}</p>
-                <p className={`text-xs text-[#C8960C] ${kn}`}>{t('president.role')}</p>
+              <div className="absolute inset-x-0 bottom-0 z-20 border-t border-[#C8960C]/20 bg-[#FFFDF8]/95 px-6 py-4 shadow-[0_-12px_28px_rgba(0,0,0,0.14)] backdrop-blur-sm">
+                <p className={`text-sm font-semibold leading-snug text-[#0F172A] ${kn}`}>{t('president.name')}</p>
+                <p className={`mt-1 text-xs font-semibold text-[#A66F08] ${kn}`}>{t('president.role')}</p>
               </div>
             </div>
           </motion.div>
