@@ -206,7 +206,7 @@ export default function Progress() {
                     const cx     = x + BAR_W / 2
                     const barY   = by(d.value)
                     const barH   = Math.max(bh(d.value), 2)
-                    const labelY = Math.max(barY - 9, PAD.top + 13)
+                    const labelY = Math.max(barY - 14, PAD.top - 10)
 
                     return (
                       <g

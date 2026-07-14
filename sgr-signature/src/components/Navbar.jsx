@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
 import LanguageToggle from './LanguageToggle'
+import sgrLogo from '../assets/SGR_MANVI.png'
 
 const links = [
   { id: 'about',      key: 'nav.about'      },
@@ -72,7 +73,7 @@ export default function Navbar() {
           aria-label="Go to top"
         >
           <img
-            src="/SGR_MANVI.png"
+            src={sgrLogo}
             alt="SGR Sahakari Sangha Manvi"
             className="h-10 w-auto shrink-0 object-contain transition-transform duration-200 group-hover:scale-105 sm:h-[48px] lg:h-[52px]"
             draggable={false}

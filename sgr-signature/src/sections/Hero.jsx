@@ -4,6 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { society, headlineStats } from '../data/society'
 import StatCounter from '../components/StatCounter'
 import { formatINRCompact } from '../utils/format'
+import heroVault from '../assets/hero-vault.png'
 
 function useTypewriter(text, speed = 36, startDelay = 300, enabled = false) {
   const [displayed, setDisplayed] = useState('')
@@ -41,7 +42,7 @@ export default function Hero({ ready = false }) {
   const kn = lang === 'kn' ? 'font-kannada' : ''
 
   const headlineText =
-    lang === 'kn' ? 'ಬಾಳಿನ ಬೆಳಕು' : 'Light of Life'
+    lang === 'kn' ? 'ಬಾಳಿಗೆ ಬೆಳಕು' : 'Light of Life'
   const { displayed, done } = useTypewriter(headlineText, 36, 300, ready)
 
   const stats = [
@@ -63,7 +64,7 @@ export default function Hero({ ready = false }) {
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-vault.png"
+          src={heroVault}
           alt=""
           aria-hidden="true"
           fetchpriority="high"

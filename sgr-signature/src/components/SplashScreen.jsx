@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import sgrLogo from '../assets/SGR_MANVI.png'
 
 export default function SplashScreen({ onDone }) {
   const [visible, setVisible] = useState(true)
@@ -23,7 +24,7 @@ export default function SplashScreen({ onDone }) {
         >
           {/* Logo */}
           <motion.img
-            src="/SGR_MANVI.png"
+            src={sgrLogo}
             alt="SGR Sahakari Sangha Manvi"
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -1,5 +1,6 @@
 import { useLanguage } from '../i18n/LanguageContext'
 import { society, offices } from '../data/society'
+import sgrLogo from '../assets/SGR_MANVI.png'
 
 const navLinks = [
   { id: 'about',      key: 'nav.about'      },
@@ -25,7 +26,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <img
-              src="/SGR_MANVI.png"
+              src={sgrLogo}
               alt="SGR Sahakari Sangha"
               className="h-12 w-auto rounded-lg bg-white object-contain p-1"
             />

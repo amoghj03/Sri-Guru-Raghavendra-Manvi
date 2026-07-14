@@ -31,12 +31,7 @@ export default function PresidentMessage() {
             className="w-full max-w-xs shrink-0 lg:w-72 lg:max-w-none"
           >
             <div className="relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-white/[0.08]">
-              <img
-                src="/president.jpg"
-                alt={t('president.name')}
-                className="h-full w-full object-cover object-top"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
-              />
+              {/* Add: import presidentImg from '../assets/president.jpg' and set src={presidentImg} when photo is available */}
               {/* Fallback gradient + initials shown behind image (visible if image missing) */}
               <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center bg-gradient-to-br from-[#1E3A5F] to-[#0B1F3A]">
                 <span className="text-5xl font-bold text-[#C8960C]/40">
