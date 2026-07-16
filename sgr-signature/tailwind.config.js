@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         sans: ['"DM Sans"', '"TT Norms Pro"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         luxury: ['"Bodoni Moda"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        numeric: ['"Space Grotesk"', '"DM Sans"', 'ui-sans-serif', 'sans-serif'],
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         kannada: ['"Noto Sans Kannada"', '"DM Sans"', 'sans-serif'],
       },

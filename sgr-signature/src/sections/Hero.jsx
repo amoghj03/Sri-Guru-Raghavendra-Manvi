@@ -147,7 +147,7 @@ export default function Hero({ ready = false, latestProgress }) {
                   >
                     <p className={isKannada
                       ? 'font-sans text-[26px] font-semibold leading-none tracking-normal text-[#0F172A] sm:text-[25px]'
-                      : 'font-luxury text-[27px] font-semibold leading-none tracking-[-0.035em] text-[#0F172A] sm:text-[25px]'}>
+                      : 'font-numeric text-[27px] font-semibold leading-none tracking-[-0.02em] text-[#0F172A] sm:text-[25px]'}>
                       <StatCounter value={s.value} format={s.format} />
                     </p>
                     <p className={isKannada
