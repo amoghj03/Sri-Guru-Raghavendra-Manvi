@@ -22,7 +22,10 @@ export default function Navbar() {
   const kn = lang === 'kn' ? 'font-kannada' : ''
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 48)
+      if (window.scrollY < window.innerHeight * 0.5) setActive(null)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)

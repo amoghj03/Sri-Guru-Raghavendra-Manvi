@@ -6,11 +6,11 @@ import { progress } from '../data/society'
 import { formatINRCompact } from '../utils/format'
 
 const METRICS = [
+  { key: 'profit',  en: 'Net Profit',       kn: 'ನಿವ್ವಳ ಲಾಭ'      },
   { key: 'capital', en: 'Working Capital',  kn: 'ದುಡಿಯುವ ಬಂಡವಾಳ' },
   { key: 'fd',      en: 'Fixed Deposits',   kn: 'ನಿಶ್ಚಿತ ಠೇವಣಿ'    },
   { key: 'loans',   en: 'Loans & Advances', kn: 'ಸಾಲ ಮತ್ತು ಮುಂಗಡ' },
   { key: 'share',   en: 'Share Capital',    kn: 'ಶೇರ್ ಬಂಡವಾಳ'     },
-  { key: 'profit',  en: 'Net Profit',       kn: 'ನಿವ್ವಳ ಲಾಭ'      },
 ]
 
 const W = 600
@@ -74,10 +74,10 @@ export default function Progress({ metrics: apiMetrics }) {
           dark
         />
 
-        <div className="mt-14 flex flex-col gap-5 lg:flex-row lg:items-start lg:gap-8">
+        <div className="mt-14 flex flex-col gap-5 lg:flex-row lg:items-stretch lg:gap-8">
 
           {/* ── Metric selector ── */}
-          <div className="flex gap-2.5 overflow-x-auto pb-1 lg:w-[27%] lg:flex-col lg:overflow-visible lg:pb-0">
+          <div className="flex gap-2.5 overflow-x-auto pb-1 lg:w-[27%] lg:flex-col lg:overflow-visible lg:pb-0 lg:h-full">
             {METRICS.map((m) => {
               const isSel = active === m.key
               const cur   = latest[m.key]
@@ -89,7 +89,7 @@ export default function Progress({ metrics: apiMetrics }) {
                 <button
                   key={m.key}
                   onClick={() => handleMetricChange(m.key)}
-                  className={`shrink-0 rounded-2xl border p-4 text-left transition-all duration-200 lg:w-full ${
+                  className={`shrink-0 rounded-2xl border p-4 text-left transition-all duration-200 lg:w-full lg:flex-1 ${
                     isSel
                       ? 'border-[#C8960C]/30 bg-gradient-to-b from-[#1E3A5F]/60 to-[#0B1F3A]/50 shadow-[inset_0_0_0_1px_rgba(200,150,12,0.12),0_4px_20px_rgba(200,150,12,0.07)]'
                       : 'border-white/[0.06] bg-white/[0.025] hover:border-white/[0.12] hover:bg-white/[0.05]'
