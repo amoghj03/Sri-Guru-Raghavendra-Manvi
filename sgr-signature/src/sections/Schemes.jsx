@@ -3,9 +3,15 @@ import SectionHeading from '../components/SectionHeading'
 import { useLanguage } from '../i18n/LanguageContext'
 import { fixedDepositRates, seniorCitizenBonus, recurringPlans, specialSchemes } from '../data/society'
 
-export default function Schemes() {
+export default function Schemes({ schemes }) {
   const { t, tf, lang } = useLanguage()
   const kn = lang === 'kn' ? 'font-kannada' : ''
+
+  // Use API data if available, fall back to hardcoded
+  const fdRates     = schemes?.fd?.length      ? schemes.fd      : fixedDepositRates
+  const rdPlans     = schemes?.rd?.length      ? schemes.rd      : recurringPlans
+  const specials    = schemes?.special?.length  ? schemes.special : specialSchemes
+  const seniorBonus = schemes?.bonus            ?? seniorCitizenBonus
 
   return (
     <section id="schemes" className="section-pad bg-white">
@@ -22,7 +28,7 @@ export default function Schemes() {
             <h3 className={`font-display mb-5 text-2xl font-medium text-[#0F172A] ${kn}`}>{t('schemes.fdTitle')}</h3>
 
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-              {fixedDepositRates.map((r, i) => (
+              {fdRates.map((r, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 16 }}
@@ -37,14 +43,14 @@ export default function Schemes() {
                 </motion.div>
               ))}
             </div>
-            <p className={`mt-3 text-[11px] text-[#94A3B8] ${kn}`}>★ {tf(seniorCitizenBonus)}</p>
+            <p className={`mt-3 text-[11px] text-[#94A3B8] ${kn}`}>★ {tf(seniorBonus)}</p>
           </div>
 
           {/* Recurring / Investment plans */}
           <div>
             <h3 className={`font-display mb-5 text-2xl font-medium text-[#0F172A] ${kn}`}>{t('schemes.rdTitle')}</h3>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-              {recurringPlans.map((p, i) => (
+              {rdPlans.map((p, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 16 }}
@@ -70,7 +76,7 @@ export default function Schemes() {
             {t('schemes.specialTitle')}
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {specialSchemes.map((s, i) => (
+            {specials.map((s, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 16 }}

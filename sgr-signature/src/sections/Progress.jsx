@@ -18,25 +18,29 @@ const H = 260
 const PAD = { top: 40, right: 16, bottom: 44, left: 72 }
 const IW = W - PAD.left - PAD.right
 const IH = H - PAD.top - PAD.bottom
-const SLOTS = progress.length
-const SLOT_W = IW / SLOTS
-const BAR_W  = SLOT_W * 0.52
-
-const bx = (i) => PAD.left + SLOT_W * i + (SLOT_W - BAR_W) / 2
 
 const SPRING = [0.22, 1.08, 0.36, 1]
 
-export default function Progress() {
+export default function Progress({ metrics: apiMetrics }) {
   const { t, lang } = useLanguage()
   const kn = lang === 'kn' ? 'font-kannada' : ''
 
   const [active,  setActive]  = useState('profit')
   const [hovered, setHovered] = useState(null)
 
-  const latest = progress[progress.length - 1]
-  const prev   = progress[progress.length - 2]
+  // Use API data if available, fall back to hardcoded
+  const progressData = (apiMetrics && apiMetrics.length > 0) ? apiMetrics : progress
 
-  const data    = progress.map((p) => ({ year: p.year, value: p[active] }))
+  // Dynamic chart sizing based on actual row count
+  const SLOTS  = progressData.length
+  const SLOT_W = IW / SLOTS
+  const BAR_W  = SLOT_W * 0.52
+  const bx     = (i) => PAD.left + SLOT_W * i + (SLOT_W - BAR_W) / 2
+
+  const latest = progressData[progressData.length - 1]
+  const prev   = progressData[progressData.length - 2]
+
+  const data    = progressData.map((p) => ({ year: p.year, value: p[active] }))
   const maxVal  = Math.max(...data.map((d) => d.value))
 
   const by = (v) => PAD.top + IH - (v / maxVal) * IH
@@ -50,7 +54,8 @@ export default function Progress() {
 
   const firstVal = data[0].value
   const lastVal  = data[data.length - 1].value
-  const cagr     = (((lastVal / firstVal) ** (1 / 9) - 1) * 100).toFixed(1)
+  const years    = progressData.length - 1
+  const cagr     = years > 0 ? (((lastVal / firstVal) ** (1 / years) - 1) * 100).toFixed(1) : '0.0'
 
   const linePoints = data.map((d, i) => `${bx(i) + BAR_W / 2},${by(d.value)}`).join(' ')
 
@@ -114,7 +119,7 @@ export default function Progress() {
                 <p className={`text-[11px] font-semibold uppercase tracking-[0.22em] text-[#94A3B8] ${kn}`}>
                   {label(currentMetric)}
                 </p>
-                <p className="mt-0.5 text-[12px] text-white/25">FY 2015–16 → 2024–25</p>
+                <p className="mt-0.5 text-[12px] text-white/25">FY {progressData[0].year} → {progressData[progressData.length - 1].year}</p>
               </div>
               <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold ring-1 ${
                 yoyUp
@@ -283,9 +288,9 @@ export default function Progress() {
             {/* Bottom stat strip */}
             <div className="grid grid-cols-3 divide-x divide-white/[0.06] border-t border-white/[0.06]">
               {[
-                { label: 'FY 2015–16', value: formatINRCompact(firstVal) },
-                { label: 'FY 2024–25', value: formatINRCompact(lastVal), accent: true },
-                { label: '9-Yr CAGR',  value: `${cagr}%` },
+                { label: `FY ${progressData[0].year}`, value: formatINRCompact(firstVal) },
+                { label: `FY ${progressData[progressData.length - 1].year}`, value: formatINRCompact(lastVal), accent: true },
+                { label: `${years}-Yr CAGR`, value: `${cagr}%` },
               ].map((stat) => (
                 <div key={stat.label} className="py-4 text-center">
                   <p className="text-[10px] uppercase tracking-[0.14em] text-white/25">{stat.label}</p>

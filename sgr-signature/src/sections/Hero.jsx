@@ -5,7 +5,7 @@ import StatCounter from '../components/StatCounter'
 import { formatINRCompact } from '../utils/format'
 import heroRayaru from '../assets/hero-rayaru-immersive-v4.jpg'
 
-export default function Hero({ ready = false }) {
+export default function Hero({ ready = false, latestProgress }) {
   const { t, tf, lang } = useLanguage()
   const isKannada = lang === 'kn'
   const kn = isKannada ? 'font-kannada' : ''
@@ -13,11 +13,20 @@ export default function Hero({ ready = false }) {
   const headlineLead = lang === 'kn' ? 'ಶ್ರೀ ಗುರು' : 'SRI GURU'
   const headlineAccent = lang === 'kn' ? 'ರಾಘವೇಂದ್ರ' : 'RAGHAVENDRA'
 
+  // Use live API data if available, fall back to hardcoded
+  const src = latestProgress ?? headlineStats
+  const live = {
+    workingCapital: latestProgress ? latestProgress.capital : headlineStats.workingCapital,
+    fixedDeposit:   latestProgress ? latestProgress.fd      : headlineStats.fixedDeposit,
+    loans:          latestProgress ? latestProgress.loans   : headlineStats.loans,
+    profit:         latestProgress ? latestProgress.profit  : headlineStats.profit,
+  }
+
   const stats = [
-    { value: headlineStats.workingCapital, format: formatINRCompact, label: lang === 'kn' ? 'ದುಡಿಯುವ ಬಂಡವಾಳ'  : 'Working Capital'   },
-    { value: headlineStats.fixedDeposit,   format: formatINRCompact, label: lang === 'kn' ? 'ನಿಶ್ಚಿತ ಠೇವಣಿ'     : 'Fixed Deposits'    },
-    { value: headlineStats.loans,          format: formatINRCompact, label: lang === 'kn' ? 'ಸಾಲ ಮತ್ತು ಮುಂಗಡ' : 'Loans & Advances'  },
-    { value: headlineStats.profit,         format: formatINRCompact, label: lang === 'kn' ? 'ವಾರ್ಷಿಕ ಲಾಭ'      : 'Annual Profit'     },
+    { value: live.workingCapital, format: formatINRCompact, label: lang === 'kn' ? 'ದುಡಿಯುವ ಬಂಡವಾಳ'  : 'Working Capital'   },
+    { value: live.fixedDeposit,   format: formatINRCompact, label: lang === 'kn' ? 'ನಿಶ್ಚಿತ ಠೇವಣಿ'     : 'Fixed Deposits'    },
+    { value: live.loans,          format: formatINRCompact, label: lang === 'kn' ? 'ಸಾಲ ಮತ್ತು ಮುಂಗಡ' : 'Loans & Advances'  },
+    { value: live.profit,         format: formatINRCompact, label: lang === 'kn' ? 'ವಾರ್ಷಿಕ ಲಾಭ'      : 'Annual Profit'     },
   ]
 
   const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })

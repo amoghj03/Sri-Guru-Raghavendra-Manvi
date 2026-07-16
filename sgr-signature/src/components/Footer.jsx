@@ -1,5 +1,5 @@
 import { useLanguage } from '../i18n/LanguageContext'
-import { society, offices } from '../data/society'
+import { society, offices, officeHours } from '../data/society'
 import sgrLogo from '../assets/SGR_MANVI.png'
 
 const navLinks = [
@@ -86,6 +86,10 @@ export default function Footer() {
                     </a>
                   </p>
                 )}
+                <p className={`mt-1.5 text-white/40 ${kn}`}>
+                  {tf(officeHours.days)}: {tf(officeHours.morning)}, {tf(officeHours.evening)}
+                </p>
+                <p className={`text-[11px] text-white/25 ${kn}`}>{tf(officeHours.holiday)}</p>
               </li>
             ))}
           </ul>

@@ -16,6 +16,13 @@ export const society = {
   },
 }
 
+export const officeHours = {
+  days:     { en: 'Mon – Sat',                              kn: 'ಸೋಮ – ಶನಿ'                               },
+  morning:  { en: '10:30 AM – 2:30 PM',                    kn: 'ಬೆಳಿಗ್ಗೆ 10:30 – ಮಧ್ಯಾಹ್ನ 2:30'          },
+  evening:  { en: '4:30 PM – 7:00 PM',                     kn: 'ಸಂಜೆ 4:30 – 7:00'                        },
+  holiday:  { en: '2nd & 4th Saturday: Closed',            kn: '2ನೇ & 4ನೇ ಶನಿವಾರ: ರಜಾ'                  },
+}
+
 export const offices = [
   {
     id: 'head',
@@ -28,6 +35,7 @@ export const offices = [
     email: 'sgr900manvi@gmail.com',
     phone: '08538 220900',
     mapQuery: 'Manvi, Karnataka 584123',
+    coords: { lat: 15.9993385, lng: 77.0464002 },
   },
   {
     id: 'lingasugur',
@@ -40,6 +48,7 @@ export const offices = [
     email: 'sgr900lingasugur@gmail.com',
     phone: '',
     mapQuery: 'Lingasugur, Karnataka 584122',
+    coords: { lat: 16.1581180, lng: 76.5262930 },
   },
 ]
 
@@ -126,6 +135,55 @@ export const specialSchemes = [
     note: { en: 'Your deposit triples on maturity.', kn: 'ನಿಮ್ಮ ಠೇವಣಿ ಮೆಚ್ಯೂರಿಟಿಯಲ್ಲಿ ಮೂರು ಪಟ್ಟಾಗುತ್ತದೆ.' },
   },
 ]
+
+export const newsAndNotices = [
+  {
+    id: 1,
+    type: 'notice',
+    date: '2025-06-10',
+    title: { en: 'Annual General Meeting – FY 2024–25', kn: 'ವಾರ್ಷಿಕ ಸಾಧಾರಣ ಸಭೆ – ಆರ್ಥಿಕ ವರ್ಷ 2024–25' },
+    body:  { en: 'All members are hereby notified that the Annual General Meeting of Sri Guru Raghavendra Pattina Souharda Sahakari Sangha Niyamita will be held on 15 July 2025 at the Head Office, Manvi. Attendance of all members is requested.', kn: 'ಶ್ರೀ ಗುರು ರಾಘವೇಂದ್ರ ಪತ್ತಿನ ಸೌಹಾರ್ದ ಸಹಕಾರಿ ಸಂಘ ನಿಯಮಿತದ ವಾರ್ಷಿಕ ಸಾಧಾರಣ ಸಭೆಯು 15 ಜುಲೈ 2025 ರಂದು ಮುಖ್ಯ ಕಚೇರಿ, ಮಾನ್ವಿಯಲ್ಲಿ ನಡೆಯಲಿದೆ. ಎಲ್ಲಾ ಸದಸ್ಯರ ಉಪಸ್ಥಿತಿ ಕೋರಲಾಗಿದೆ.' },
+  },
+  {
+    id: 2,
+    type: 'news',
+    date: '2025-05-01',
+    title: { en: 'FD Interest Rates Revised – Effective May 2025', kn: 'ಎಫ್‌ಡಿ ಬಡ್ಡಿ ದರ ಪರಿಷ್ಕರಣೆ – ಮೇ 2025 ರಿಂದ ಜಾರಿ' },
+    body:  { en: 'We are pleased to announce revised Fixed Deposit interest rates effective 1 May 2025. Deposits of 1–2 years now earn 10.50% p.a. and 2–3 years earn 11.00% p.a. Senior citizens receive an additional 0.50%.', kn: '1 ಮೇ 2025 ರಿಂದ ನಿಶ್ಚಿತ ಠೇವಣಿ ಬಡ್ಡಿ ದರಗಳನ್ನು ಪರಿಷ್ಕರಿಸಲಾಗಿದೆ. 1–2 ವರ್ಷ ಠೇವಣಿಗೆ 10.50% ಮತ್ತು 2–3 ವರ್ಷಕ್ಕೆ 11.00% ವಾರ್ಷಿಕ ಬಡ್ಡಿ ದೊರೆಯುತ್ತದೆ. ಹಿರಿಯ ನಾಗರಿಕರಿಗೆ ಹೆಚ್ಚುವರಿ 0.50%.' },
+  },
+  {
+    id: 3,
+    type: 'news',
+    date: '2025-04-07',
+    title: { en: 'Society Completes 9 Years of Service', kn: 'ಸಂಘವು 9 ವರ್ಷಗಳ ಸೇವೆ ಪೂರ್ಣಗೊಳಿಸಿದೆ' },
+    body:  { en: 'On 7 January 2025, our society proudly completed 9 years of dedicated service to the communities of Manvi and Lingasugur. With a working capital of over ₹8 Cr and thousands of trusted members, we thank you for your continued support.', kn: '7 ಜನವರಿ 2025 ರಂದು ನಮ್ಮ ಸಂಘವು ಮಾನ್ವಿ ಮತ್ತು ಲಿಂಗಸುಗೂರು ಸಮುದಾಯಗಳಿಗೆ 9 ವರ್ಷಗಳ ಸೇವೆ ಪೂರ್ಣಗೊಳಿಸಿದೆ. ₹8 ಕೋಟಿಗೂ ಹೆಚ್ಚಿನ ದುಡಿಯುವ ಬಂಡವಾಳ ಮತ್ತು ಸಾವಿರಾರು ನಂಬಿಕಸ್ತ ಸದಸ್ಯರೊಂದಿಗೆ ನಿಮ್ಮ ಬೆಂಬಲಕ್ಕೆ ಧನ್ಯವಾದಗಳು.' },
+  },
+  {
+    id: 4,
+    type: 'notice',
+    date: '2025-03-20',
+    title: { en: 'Lingasugur Branch – Extended Hours (Temporary)', kn: 'ಲಿಂಗಸುಗೂರು ಶಾಖೆ – ತಾತ್ಕಾಲಿಕ ವಿಸ್ತರಿತ ಸಮಯ' },
+    body:  { en: 'The Lingasugur branch will operate with extended hours (9:00 AM – 7:00 PM) from 25 March to 31 March 2025 to assist members with year-end account settlements.', kn: 'ಆರ್ಥಿಕ ವರ್ಷಾಂತ್ಯದ ಖಾತೆ ಇತ್ಯರ್ಥಕ್ಕಾಗಿ 25 ರಿಂದ 31 ಮಾರ್ಚ್ 2025 ರವರೆಗೆ ಲಿಂಗಸುಗೂರು ಶಾಖೆ ವಿಸ್ತರಿತ ಸಮಯ (ಬೆಳಿಗ್ಗೆ 9:00 – ಸಂಜೆ 7:00) ಕಾರ್ಯನಿರ್ವಹಿಸಲಿದೆ.' },
+  },
+  {
+    id: 5,
+    type: 'news',
+    date: '2025-01-15',
+    title: { en: 'New Loan Schemes Launched for FY 2025–26', kn: 'ಆರ್ಥಿಕ ವರ್ಷ 2025–26 ಕ್ಕಾಗಿ ಹೊಸ ಸಾಲ ಯೋಜನೆಗಳು' },
+    body:  { en: 'We are delighted to introduce new personal and business loan schemes for FY 2025–26 with competitive interest rates and flexible repayment options. Visit our office or contact us to know more.', kn: 'ಆರ್ಥಿಕ ವರ್ಷ 2025–26 ಕ್ಕಾಗಿ ಸ್ಪರ್ಧಾತ್ಮಕ ಬಡ್ಡಿ ದರ ಮತ್ತು ಹೊಂದಿಕೊಳ್ಳಬಲ್ಲ ಮರುಪಾವತಿ ಆಯ್ಕೆಗಳೊಂದಿಗೆ ಹೊಸ ವೈಯಕ್ತಿಕ ಮತ್ತು ವ್ಯಾಪಾರ ಸಾಲ ಯೋಜನೆಗಳನ್ನು ಪರಿಚಯಿಸಲಾಗುತ್ತಿದೆ.' },
+  },
+  {
+    id: 6,
+    type: 'notice',
+    date: '2024-12-01',
+    title: { en: 'Office Closed – Public Holidays Dec 2024', kn: 'ಕಚೇರಿ ಮುಚ್ಚಿರುತ್ತದೆ – ಡಿಸೆಂಬರ್ 2024 ಸಾರ್ವಜನಿಕ ರಜಾದಿನಗಳು' },
+    body:  { en: 'Both offices will remain closed on 25 December 2024 (Christmas) and 1 January 2025 (New Year). We wish all our members a joyous festive season.', kn: '25 ಡಿಸೆಂಬರ್ 2024 (ಕ್ರಿಸ್‌ಮಸ್) ಮತ್ತು 1 ಜನವರಿ 2025 (ಹೊಸ ವರ್ಷ) ಎರಡೂ ಕಚೇರಿಗಳು ಮುಚ್ಚಿರುತ್ತವೆ. ಎಲ್ಲಾ ಸದಸ್ಯರಿಗೆ ಶುಭಾಶಯಗಳು.' },
+  },
+]
+
+// Paste your deployed Apps Script Web App URLs here after setup.
+export const galleryApiUrl = 'https://script.google.com/macros/s/AKfycbzug76zC_1FtNSmpVglsGcBXg41J_b-8grWV56KlpKNt1bRlKPw7a5USkNxZDVMie4sIQ/exec'
+export const newsApiUrl    = 'https://script.google.com/macros/s/AKfycbyi84J6AS2nnNY0-_ooXQADyqAqHE8d2flXj6UjkzT6JVooGGRIEunwNPV4k80Sa74P3Q/exec'
 
 // Derived headline stats for the proof section (latest year = 2024-25).
 const latest = progress[progress.length - 1]

@@ -8,6 +8,8 @@ const links = [
   { id: 'about',      key: 'nav.about'      },
   { id: 'schemes',    key: 'nav.schemes'    },
   { id: 'growth',     key: 'nav.progress'   },
+  { id: 'gallery',    key: 'nav.gallery'    },
+  { id: 'news',       key: 'nav.news'       },
   { id: 'leadership', key: 'nav.leadership' },
   { id: 'contact',    key: 'nav.contact'    },
 ]
